@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Grid</title>
+    <style>
+        #grid{
+            border:5px solid rgb(40, 108, 211);
+            display:grid;
+            grid-template-columns: 150px 1fr; /* 첫번째div 150, 두번째div 나머지 공간 다 씀 */
+        }
+        div{
+            border:5px solid grey;
+        }
+    </style>
+</head>
+<h1>
+    <div id="grid">
+        <div>navigation </div>
+        <div>article </div>
+    </div>
+</body>
+</html>
