@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body{
+            display: flex;
+            align-items: center; /* 안 먹음 */
+            justify-content: center;
+        }
+        .container{
+            display: flex; 
+            /*flex-direction이 row로 되어 있어 수평으로 나옴*/
+            flex-direction: column;
+            width: 800px;
+            border: 1px solid gray;
+        }
+        header{
+            border-bottom: 1px solid gray;
+            padding-left: 20px;
+        }
+        footer{
+            border-top: 1px solid gray;
+            padding-left: 20px;
+            text-align: center;
+        }
+        .content{
+            display: flex;
+        }
+        .content nav{
+            border-right:1px solid grey;
+        }
+        .content aside{
+            border-left: 1px solid grey;
+        }
+        nav, aside{
+            flex-basis:150px;
+            flex-shrink: 0;/*줄지 않음*/
+        }
+        main{
+            padding: 10px;
+        }
+        aside{
+            padding: 10px;
+            order: 2;
+        }
+        nav{
+            order:-1;
+        }
+        main{
+            order:1;
+            /*column-count:2;*/
+            column-width:200px;
+            text-align: justify;
+            column-gap:12px;
+            column-rule-style: dotted;
+            column-rule-width:1px;
+            column-rule-color: grey;
+        }
+        .sub{
+            column-span: all;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>생활코딩</h1>
+        </header>
+        <section class="content">
+            <nav>
+                <ul>
+                    <li>html</li>
+                    <li>css</li>
+                    <li>javascript</li>
+                </ul>
+            </nav>
+            <main>
+                메인 컨텐츠가 들어갑니다.메인 컨텐츠가 들어갑니다.메인 컨텐츠가 들어갑니다.메인 컨텐츠가 들어갑니다.메인 컨텐츠가 들어갑니다.메인 컨텐츠가 들어갑니다.
+                <h1 class="sub">이건 중요한 내용이야!!!</h1>메인 컨텐츠가 들어갑니다.메인 컨텐츠가 들어갑니다.메인 컨텐츠가 들어갑니다.메인 컨텐츠가 들어갑니다.메인 컨텐츠가 들어갑니다.메인 컨텐츠가 들어갑니다.
+                메인 컨텐츠가 들어갑니다.메인 컨텐츠가 들어갑니다.메인 컨텐츠가 들어갑니다.메인 컨텐츠가 들어갑니다.메인 컨텐츠가 들어갑니다.메인 컨텐츠가 들어갑니다.
+                메인 컨텐츠가 들어갑니다.메인 컨텐츠가 들어갑니다.메인 컨텐츠가 들어갑니다.메인 컨텐츠가 들어갑니다.메인 컨텐츠가 들어갑니다.메인 컨텐츠가 들어갑니다.
+                메인 컨텐츠가 들어갑니다.메인 컨텐츠가 들어갑니다.메인 컨텐츠가 들어갑니다.메인 컨텐츠가 들어갑니다.메인 컨텐츠가 들어갑니다.메인 컨텐츠가 들어갑니다.
+                메인 컨텐츠가 들어갑니다.메인 컨텐츠가 들어갑니다.메인 컨텐츠가 들어갑니다.메인 컨텐츠가 들어갑니다.메인 컨텐츠가 들어갑니다.메인 컨텐츠가 들어갑니다.
+                메인 컨텐츠가 들어갑니다.메인 컨텐츠가 들어갑니다.메인 컨텐츠가 들어갑니다.메인 컨텐츠가 들어갑니다.메인 컨텐츠가 들어갑니다.메인 컨텐츠가 들어갑니다.
+                메인 컨텐츠가 들어갑니다.메인 컨텐츠가 들어갑니다.메인 컨텐츠가 들어갑니다.메인 컨텐츠가 들어갑니다.메인 컨텐츠가 들어갑니다.메인 컨텐츠가 들어갑니다.
+            </main>
+            <aside>
+                AD 광고<br>
+                <button type="button" onclick="location.href='https://www.youtube.com/watch?v=y3Zx-nVH25s&list=PLuHgQVnccGMDaVaBmkX0qfB45R_bYrV62&index=40'">
+                    이동
+                </button>
+            </aside>
+        </section>
+        <footer>
+            <address>
+                <a href="https://www.youtube.com/watch?v=8DJBCHro-3Q&list=PLuHgQVnccGMDaVaBmkX0qfB45R_bYrV62&index=38">
+                    생활코딩 CSS
+                </a><br>
+                <a href="https://opentutorials.org/module/2367/13526">
+                    practice
+                </a>
+            </address>
+        </footer>
+    </div>
+</body>
+</html>   
