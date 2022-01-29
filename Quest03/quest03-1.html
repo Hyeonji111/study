@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>별찍기</title>
+</head>
+<body>
+    <script>
+        var num = prompt("삼각형 높이");
+        var star = '';
+        for (var i = 0; i < num; i++) {
+            for (var j = (num-1); j > i; j--) {
+                star += ' ';
+            }
+            for (var k = 0; k <= (i * 2); k++) {
+                star += '*';
+            }
+            star += '\n';
+        }
+        console.log(star);
+    </script>
+</body>
+</html>

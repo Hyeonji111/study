@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Number guessing game</title>
+</head>
+<style>
+    body{
+        text-align: center;
+    }
+</style>
+<body>
+    <h1>Number guessing game</h1>
+    
+    <p class="guesses">We have selected a random number between 1 and 100. </p>
+    <p class="lastResult">See if you can guess it in 10 turns or less. </p>
+    <p class="lowOrHi">We'll tell you if your guess was too high or too low.</p>
+    
+    <label for="guessField">Enter a guess: </label><input type="text" id="guessField" class="guessField">
+    <input type="submit" value="Submit guess" class="guessSubmit">
+
+    <script>
+        // 변수 추가
+        var randomNumber = Math.floor(Math.random() * 100) + 1;
+
+        var guesses = document.querySelector('.guesses');
+        var lastResult = document.querySelector('.lastResult');
+        var lowOrHi = document.querySelector('.lowOrHi');
+
+        var guessSubmit = document.querySelector('.guessSubmit');
+        var guessField = document.querySelector('.guessField');
+
+        var guessCount = 1;
+        var resetButton;
+        guessField.focus();
+
+        // function
+        function checkGuess() {
+            var userGuess = Number(guessField.value);
+            if (guessCount === 1) {
+                guesses.textContent = 'Previous guesses: ';
+            }
+            guesses.textContent += userGuess + ' ';
+
+            if (userGuess === randomNumber) {
+                lastResult.textContent = 'Congratulations! You got it right!';
+                lastResult.style.backgroundColor = 'green';
+                lowOrHi.textContent = '';
+                function setGameOver() {
+                    guessField.disabled = true;
+                    guessSubmit.disabled = true;
+                    resetButton = document.createElement('button');
+                    resetButton.textContent = 'Start new game';
+                    document.body.appendChild(resetButton);
+                    resetButton.addEventListener('click', resetGame);
+                }
+            } else if (guessCount === 10) {
+                lastResult.textContent = '!!!GAME OVER!!!';
+                function setGameOver() {
+                    guessField.disabled = true;
+                    guessSubmit.disabled = true;
+                    resetButton = document.createElement('button');
+                    resetButton.textContent = 'Start new game';
+                    document.body.appendChild(resetButton);
+                    resetButton.addEventListener('click', resetGame);
+                }
+            } else {
+                lastResult.textContent = 'Wrong!';
+                lastResult.style.backgroundColor = 'red';
+                if(userGuess < randomNumber) {
+                lowOrHi.textContent = 'Last guess was too low!';
+                } else if(userGuess > randomNumber) {
+                lowOrHi.textContent = 'Last guess was too high!';
+                }
+            }
+
+            guessCount++;
+            guessField.value = '';
+            guessField.focus();
+        }
+        guessSubmit.addEventListener('click', checkGuess);
+
+        function setGameOver() {
+            guessField.disabled = true;
+            guessSubmit.disabled = true;
+            resetButton = document.createElement('button');
+            resetButton.textContent = 'Start new game';
+            document.body.appendChild(resetButton);
+            resetButton.addEventListener('click', resetGame);
+        }
+        function resetGame() {
+            guessCount = 1;
+
+            var resetParas = document.querySelectorAll('.resultParas p');
+            for (var i = 0 ; i < resetParas.length ; i++) {
+                resetParas[i].textContent = '';
+            }
+
+            resetButton.parentNode.removeChild(resetButton);
+
+            guessField.disabled = false;
+            guessSubmit.disabled = false;
+            guessField.value = '';
+            guessField.focus();
+
+            lastResult.style.backgroundColor = 'white';
+
+            randomNumber = Math.floor(Math.random() * 100) + 1;
+        }
+        // guessField.value = 'Hello';
+        // guesses.value
+        // guesses.textContent = 'Where is my paragraph?';
+        // guesses.style.backgroundColor = 'yellow';
+        // guesses.style.fontSize = '200%';
+        // guesses.style.padding = '10px';
+        // guesses.style.boxShadow = '3px 3px 6px black';
+    </script>
+</body>
+</html>
