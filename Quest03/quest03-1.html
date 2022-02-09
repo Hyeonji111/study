@@ -6,18 +6,22 @@
 </head>
 <body>
     <script>
-        var num = prompt("삼각형 높이");
-        var star = '';
-        for (var i = 0; i < num; i++) {
-            for (var j = (num-1); j > i; j--) {
-                star += ' ';
+        const num = prompt("삼각형 높이");
+        aaa(num);
+        function aaa(num){
+            let star = '';
+            for (let i = 0; i < num; i++) {
+                for (let j = (num-1); j > i; j--) {
+                    star += ' ';
+                }
+                for (let k = 0; k <= (i * 2); k++) {
+                    star += '*';
+                }
+                star += '\n';
             }
-            for (var k = 0; k <= (i * 2); k++) {
-                star += '*';
-            }
-            star += '\n';
+            console.log(star);
         }
-        console.log(star);
+
     </script>
 </body>
 </html>
