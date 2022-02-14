@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Learn JavaScript</title>
+</head>
+<body>
+    <script>
+        // 더하기
+        function sum(a, b) {
+            return a+b;
+        } 
+        // 곱하기
+        function multiply(a, b) {
+           return a*b;
+        }
+        // 문자 길이
+        function getCharCount(str) {
+            return str.length;
+        }
+        // 대문자로
+        function shoutMyName(name) {
+            return name.toUpperCase();
+        }
+        // 소문자로
+        function lowerName(name) {
+            return name.toLowerCase();
+        }
+        // 인덱스
+        function getFirstCharacter(name) {
+            return name[0];
+        }
+        // 인덱스 (마지막 텍스트 불러오기)
+        function getLastCharacter(name) {
+            return name[name.length - 1]
+        }
+        // start index num, end index ignore
+        function skipFirstCharacter(text) {
+            return text.substring(1);
+        }
+        // export function
+
+        cosole.log(sum(2,4));
+        console.log(multiply(3, 2));
+        console.log(getCharCount("Alex 123")); // 8
+        console.log(shoutMyName("Charley")); // "CHARLEY"
+        console.log(lowerName("Sam")); // "sam"
+        console.log(getFirstCharacter("Amsterdam")); // "A"
+        console.log(getLastCharacter("Sam")); // "m"
+        console.log(skipFirstCharacter("Xcode")); // "code"
+
+
+        // https://coderap.tistory.com/320
+    </script> 
+</body>
+</html>
