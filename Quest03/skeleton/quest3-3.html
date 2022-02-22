@@ -21,7 +21,7 @@
 
     <li style="margin-bottom:5px;">랜덤값으로 지정할 수 있는 최대 자릿수는 3입니다.</li>
     <li style="margin-bottom:5px;">자릿수를 등록하면 해당 자릿수 크기의 숫자 2개가 랜덤으로 표시 됩니다.</li>
-    <li style="margin-bottom:5px;">랜덤으로 표시되는 2개 숫자의 곱셈값을 기록하세요.</li>
+    <li style="margin-bottom:5px;">랜덤으로 표시되는 2개 숫자의 곱셈값을 기록하세요.</li><br>
     <div class="setDigitForm">
       <label for="setDigitNum">자릿수를 설정해주세요: </label>
       <input type="text" id="setDigitNum" class="setDigitNum">
@@ -38,11 +38,37 @@
     </div>
 
     <script>
-      let num = document.createElement('input')
-        let ran1 = Math.random();
-        let ran2 = Math.random();
+      let setDigitNum = document.querySelector('.setDigitNum');
+      let setDigitSubmit = document.querySelector('.setDigitSubmit');
 
-        document.write(ran1*(10**num));
+      let randA = document.querySelector('#randA')
+      let randB = document.querySelector('#randB')
+      let guessSubmit = document.querySelector('.guessSubmit')
+
+      let guessField = document.querySelector('.guessField')
+      let resultArea = document.querySelector('.resultArea span')
+
+      //random
+      let ranA = (Math.floor(Math.random()*9)+1)*(10**(setDigitNum-1));
+      let ranB = (Math.floor(Math.random()*9)+1)*(10**(setDigitNum-1));
+      let mulAB = ranA*ranB;
+
+      // function multiply
+      setDigitSubmit.addEventListener('click', function(){
+        mulAB;
+      });
+      console.log(mulAB);
+
+      // function check
+      guessSubmit.addEventListener('click', function(){
+        if(mulAB == guessField){
+          resultArea.textContent = '정답'
+        }else{
+          resultArea.textContent = '오답'
+        }
+      });
+
+      // 랜덤 수가 nan으로 뜸..
 
     </script>
   </body>

@@ -38,6 +38,68 @@
     </div>
 
     <script>
+      let setDigitSubmit = document.querySelector('.setDigitSubmit')
+      
+      let guessField = document.querySelector('.guessField')
+      let guessSubmit = document.querySelector('.guessSubmit')
+
+      let resultArea = document.querySelector('.resultArea span')
+
+      
+      // random array function
+      function random_number() {
+        number_candidate = [1,2,3,4,5,6,7,8,9];
+        number_picked = [];
+        
+        for (let i = 0; i < 3; i += 1) {
+            let picked = number_candidate.splice(Math.floor(Math.random() * (9 - i)), 1)[0];
+            number_picked.push(picked);
+        }
+      }
+
+      setDigitSubmit.addEventListener('click', function(){
+        random_number();
+        console.log(number_picked);
+      });
+
+      //
+      let num100 = number_picked[0]
+      let num10 = number_picked[1]
+      let num1 = number_picked[2]
+      
+      let sub100 = guessField/100
+      let sub10 = guessField/10/10
+      let sub1 = guessField%100
+      sub = [sub100, sub10, sub1]
+
+      let strike = 0;
+      let ball = 0;
+
+
+      guessSubmit.addEventListener('click',function(){
+        for(let i=0; i < sub.length; i++){
+          if(number_picked[i]==sub[i]){
+            resultArea.textContent = 'STRIKE!'
+          }else{
+            resultArea.textContent = 'OUT!'
+          }
+        }
+
+        for(i=0; i < sub.length; i++){
+          for(let j=0; j<3; j++){
+            if(number_picked[i] == sub[j]){
+              if(i == j){
+                strike++;
+              }else{
+                ball++;
+              }
+            }   
+          }
+        }
+        resultArea.textContent = 'STRIKE' + strike + 'BALL' + ball;
+      });
+
+      
       /** 
         # 재령씨를 위한 게임룰 #
         
@@ -51,7 +113,12 @@
       	
       /** TODO: 여기에 게임이 작동될 수 있도록 스크립트를 짜보세요  */
       
+    // random
+      // let ran1 =(Math.floor(Math.random()*9)+1);
+      // let ran10 =(Math.floor(Math.random()*99)+1)/10*10;
+      // let ran100 =(Math.floor(Math.random()*999)+1)/100*100;
 
+      // let sum = ran1 + ran10 + ran100  
     </script>
   </body>
 </html>
