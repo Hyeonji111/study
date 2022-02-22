@@ -39,7 +39,11 @@
             return text.substring(1);
         }
         // export function
+        export function getDescription(text) {
+            return text.substring(0, 10);
+        }
 
+        
         cosole.log(sum(2,4));
         console.log(multiply(3, 2));
         console.log(getCharCount("Alex 123")); // 8
