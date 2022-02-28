@@ -24,7 +24,7 @@
     <li style="margin-bottom:5px;">랜덤으로 표시되는 2개 숫자의 곱셈값을 기록하세요.</li><br>
     <div class="setDigitForm">
       <label for="setDigitNum">자릿수를 설정해주세요: </label>
-      <input type="text" id="setDigitNum" class="setDigitNum">
+      <input type="text" id="setDigitNum" class="setDigitNum" maxlength="3">
       <input type="submit" value="등록" class="setDigitSubmit">
     </div>
 	
@@ -38,37 +38,66 @@
     </div>
 
     <script>
-      let setDigitNum = document.querySelector('.setDigitNum');
-      let setDigitSubmit = document.querySelector('.setDigitSubmit');
+      // 변수 선언
+      let setDigitNum = document.querySelector('#setDigitNum').value;
+      const setDigitSubmit = document.querySelector('.setDigitSubmit');
 
-      let randA = document.querySelector('#randA')
-      let randB = document.querySelector('#randB')
-      let guessSubmit = document.querySelector('.guessSubmit')
+      let randA = document.getElementById('#randA');
+      let randB = document.getElementById('#randB');
+      const guessSubmit = document.querySelector('.guessSubmit');
 
-      let guessField = document.querySelector('.guessField')
-      let resultArea = document.querySelector('.resultArea span')
+      let guessField = document.querySelector('.guessField').value;
+      const resultArea = document.querySelector('.resultArea span');
 
-      //random
-      let ranA = (Math.floor(Math.random()*9)+1)*(10**(setDigitNum-1));
-      let ranB = (Math.floor(Math.random()*9)+1)*(10**(setDigitNum-1));
-      let mulAB = ranA*ranB;
+      let a = 0;
+      let b = 0;
+      let ab = 0;
+      
+      // ranA, ranB 입력
+      resultArea.textContent = '';
 
-      // function multiply
+      setDigitSubmit.focus();
+
       setDigitSubmit.addEventListener('click', function(){
-        mulAB;
+        switch(setDigitNum){
+          case 1:
+            a = Math.floor(Math.random()*9)+1;
+            b = Math.floor(Math.random()*9)+1;
+            ab = a*b;
+            randA.textContent = a;
+            randB.textContent = b;
+            break;
+          case 2: 
+            a = Math.floor(Math.random()*9)+1;
+            b = Math.floor(Math.random()*9)+1;
+            ab = a*b;
+            randA.textContent = a;
+            randB.textContent = b;
+            break;
+          case 3: 
+            a = Math.floor(Math.random()*999)+100;
+            b = Math.floor(Math.random()*999)+100;
+            ab = a*b;
+            randA.textContent = a;
+            randB.textContent = b;
+            break;
+          default :
+            alert("최대 자릿수는 3입니다.");
+        }
+        console.log(ab);
       });
-      console.log(mulAB);
 
-      // function check
+      // check => '정답' or '오답'
       guessSubmit.addEventListener('click', function(){
-        if(mulAB == guessField){
-          resultArea.textContent = '정답'
+
+        let answer = Number(guessField.value);
+
+        if(ab == answer){
+          resultArea.textContent = ab + ' => 정답'
         }else{
           resultArea.textContent = '오답'
         }
       });
-
-      // 랜덤 수가 nan으로 뜸..
 
     </script>
   </body>
