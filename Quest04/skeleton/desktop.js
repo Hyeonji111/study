@@ -6,6 +6,10 @@
 // 4. Drag & Drop API를 사용하지 말고, 실제 마우스 이벤트(mouseover, mousedown, mouseout 등)를 사용하여 구현해 보세요!
 // 5. 폴더 아이콘은 더블클릭하면 해당 폴더가 창으로 열리며, 열린 폴더의 창 역시 드래그를 통해 움직일 수 있어야 합니다.
 // 6. 여러 개의 바탕화면을 각각 다른 DOM 엘리먼트에서 동시에 운영할 수 있습니다.
+const op = () => {
+	console.log("ㅎㅇ");
+	window.open("desktop.html", "test", "width=200, height=100");
+}
 
 class Desktop {
 	/* TODO: Icon 클래스는 어떤 멤버함수와 멤버변수를 가져야 할까요? */
@@ -86,7 +90,6 @@ class Desktop {
 		el.style.transform = "translate3d(" + xPos + "px, " + yPos + "px, 0)";
 	  }
 	}
-
 	// dbl(){
 	// 	let openNew = window.open("", "", "width=200, height=100");
 	// 	document.getElementsByTagName("div").addEventListener("dblclick", openNew);
@@ -141,9 +144,11 @@ class Folder {
 	ff(){
 		let desktop = document.getElementsByClassName("desktop")[0];
 		for (let i = 0; i < this.num2; i++) {
+			
 			let div = document.createElement("div");
 			let br = document.createElement("br");
-			div.setAttribute("class", "item1");
+			div.setAttribute("class", "item2");
+			div.setAttribute("ondblclick", "op()")
 			div.innerHTML = this.name2 + (i + 1);
 			//<div>innerHTML</div>
 			desktop.appendChild(div);
@@ -151,24 +156,8 @@ class Folder {
 		};
 	};
 	dbl(){
-		let div = document.createElement("div");
-		div.setAttribute("class", "item2");
-
-		let openNew = window.open("", "", "width=200, height=100");
 		
-		function openNew(){
-			document.getElementsByClassName("item2").addEventListener("dblclick", openNew)
-
-			for(let i=0; i<this.num2; i++){
-				let desktop = document.getElementsByClassName(".desktop")[0];
-				let div = document.createElement("div");
-				let br = document.createElement("br");
-				div.setAttribute("class", "item2");
-				div.innerHTML = this.name2 + (i+1);
-				desktop.appendChild(div);
-				desktop.appendChild(br);
-			}
-		}
+		
 		// let openNew = window.open("", "", "width=200, height=100");
 		// document.getElementsByTagName("div").addEventListener("dblclick", openNew);
 	};
