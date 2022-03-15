@@ -1,0 +1,38 @@
+* 객체지향(정리정돈) 
+: 서로 연관된 변수와 함수를 그룹핑하고 이름을 붙인 것
+
+* class
+1) class 선언
+
+class Rectangle {
+  constructor(height, width) {
+    this.height = height; // this.클래스명 -> 선언
+    this.width = width;
+  }
+}
+
+2) hoisting
+// 클래스는 함수선언과 다르게, 반드시 선언 후에 사용 가능
+
+3) class 표현식
+// unnamed
+let Rectangle = class {
+  constructor(height, width) {
+    this.height = height;
+    this.width = width;
+  }
+};
+console.log(Rectangle.name); // 출력: "Rectangle"
+
+// named
+let Rectangle = class Rectangle2 {
+  constructor(height, width) {
+    this.height = height;
+    this.width = width;
+  }
+};
+console.log(Rectangle.name); // 출력: "Rectangle2"
+
+* 상속
+1) 속성 상속
+2) 메소드 상속
