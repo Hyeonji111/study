@@ -87,16 +87,14 @@ class Desktop {
 	  }
 	}
 
-	dbl(){
-		// let div = document.querySelector("div");
-		// let openNew = window.open("", "", "width=400, height=200");
-		// div.addEventListener("dblclick", openNew);
-		
-		$(div).dblclick(function(){
-				window.open("","");
-			
-		});
-	}
+	// dbl(){
+	// 	let openNew = window.open("", "", "width=200, height=100");
+	// 	document.getElementsByTagName("div").addEventListener("dblclick", openNew);
+
+	// 	let item2 = document.querySelector(".item2");
+	// 	let openNew = window.open("", "", "width=400, height=200");
+	// 	item2.addEventListener("dblclick", openNew);
+	// };
 
   }//class desktop
 
@@ -141,21 +139,55 @@ class Folder {
 	// }
 	// Method
 	ff(){
-		let desktop2 = document.getElementsByClassName("desktop")[0];
-		for(let i=0; i<this.num2; i++){
+		let desktop = document.getElementsByClassName("desktop")[0];
+		for (let i = 0; i < this.num2; i++) {
 			let div = document.createElement("div");
 			let br = document.createElement("br");
-			div.setAttribute("class", "item2")
-			div.innerHTML = this.name2 + (i+1);
-			desktop2.appendchild(div);
-			desktop2.appendchild(br);
+			div.setAttribute("class", "item1");
+			div.innerHTML = this.name2 + (i + 1);
+			//<div>innerHTML</div>
+			desktop.appendChild(div);
+			desktop.appendChild(br);
 		};
 	};
+	dbl(){
+		let div = document.createElement("div");
+		div.setAttribute("class", "item2");
+
+		let openNew = window.open("", "", "width=200, height=100");
+		
+		function openNew(){
+			document.getElementsByClassName("item2").addEventListener("dblclick", openNew)
+
+			for(let i=0; i<this.num2; i++){
+				let desktop = document.getElementsByClassName(".desktop")[0];
+				let div = document.createElement("div");
+				let br = document.createElement("br");
+				div.setAttribute("class", "item2");
+				div.innerHTML = this.name2 + (i+1);
+				desktop.appendChild(div);
+				desktop.appendChild(br);
+			}
+		}
+		// let openNew = window.open("", "", "width=200, height=100");
+		// document.getElementsByTagName("div").addEventListener("dblclick", openNew);
+	};
+		// let item2 = document.querySelector(".item2");
+		// let openNew = window.open("", "", "width=400, height=200");
+		// item2.addEventListener("dblclick", openNew);
 
 };//Folder
 
 class Window extends Desktop {
 	/* TODO: Window 클래스는 어떤 멤버함수와 멤버변수를 가져야 할까요? */
+	// let user = prompt("이름을 입력하세요.");
+    // document.write("<b><big>" + user + "</big></b>님, 환영합니다."):
+	// window.onload = function(){
+	// 	document.getElementById("item2").onclick = function(){
+	// 		let i_num = Number(prompt("아이콘 받을 갯수"));
+	// 		let f_num = Number(prompt("폴더 받을 갯수"));
+	// 	};
+	// };
 };
 
 
