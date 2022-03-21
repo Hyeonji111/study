@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        #boardSz{
+            min: 1;
+            max: 10;
+        }
+        #userBoard{
+            width: 500;
+            height: 500;
+            align: center;
+        }
+        #comBoard{
+            width: 500;
+            height: 500;
+            align: center;
+        }
+    </script>
+</head>
+<body>
+    <h1> ---Bingo Game--- </h1>
+    <input class="nbrStyle" id="boardSz" type="number">
+    <input type="button" value="Generate board" onclick="btnGenerateClick()">
+
+    <h3>User's board</h3>
+    <table id="userBoard"></table><br>
+    <h4 id="userBingoCnt">User's Bingo Checked Line Count: 0</h4>
+
+    <h3>Computer's board</h3>
+    <table id="comBoard"></table><br>
+    <h4 id="comBingoCnt">Computer's Bingo Checked Line Count: 0</h4>
+
+    <script>
+        let userTable=[];
+        let comTable=[];
+        let userBoard=document.getElementById('UserBoard');
+        let comBoard=document.getElementById('comBoard');
+
+        /* 랜덤 숫자로 구성된 빙고판 생성 */
+        function isOverlap(table,i,j,size){
+            for(let k1=1; k1<=25; k1++){
+                for(let k2=1; k2<size; k2++){
+                    if(k1===i && k2===j){
+                        // 숫자 격치면 
+                        return true;
+                    }
+                    if(table[i][j]===table[k1][k2]){
+                        // 숫자 겹치지 않으면
+                        return false;
+                    }
+                }
+            }return true;
+        }
+        /* 셀 체크  */
+        function cellClick(e){
+            for(let i=0; i<userTable.length; i++){
+                for(let j=0; j<userTable.length; j++){
+                    if(comBoard.rows[i].cells[j].innerHTML == e.srcElent.innerHTML){// rows(행), cells(열)
+                        comBoard.rows[i].cells[j].innerHTML='<del>'
+                        +comBoard.rows[i].cells[j].innerHTML+'</del>'
+                        comTable[i][j]= -1;
+                        break
+                    }
+                }
+            }
+
+            userTable[e.srcElent.parentNode.rowIndex][e.srcElent.cellIndex] = -1;
+            e.srcElent.innerHTML = '<del>'+ e.srcElent.innerHTML + '</del>';
+
+            let userBingoCnt = document.getElementById('userBingoCnt');
+            let userCnt = getBingoCtnt(userTable, checkCell(userTable),false);
+            userBingoCnt.innerHTML = "User's Bingo Checkde Line Count:" + userCnt;
+
+            let comBingoCnt = document.getElementById('comBingoCnt');
+            let comCnt = getBingoCtnt(comTable, checkCell(comTable),false);
+            comBingoCnt.innerHTML = "Computer's Bingo Checkde Line Count:" + comCnt;
+
+            if(userCnt>=userTable.length){
+                alert('bingo!');
+            }
+            
+            if(comCnt>=userTable.length){
+                alert('com bingo!!');
+            }
+
+
+        }
+        /* 승패여부, 셀의 수 체크 */
+        function checkCell(table){ // table: 빙고 라인수 체크할 배열
+            let size = table.length;
+            let diag = [0,0],hor=[],bingo[];
+
+            for(let i=0;; i<size; i++){
+                hor[i] = 0;
+                ver[i] = 0;
+            }
+            for(let i=0; i<2.size+2;i++){
+                bingo[i] = 0;
+            }
+            for(let i=0; i<size; i++){
+                if(table[i][i]==-1){
+                    diag[0] += 1;
+                }
+                if(table[i][size-1]==-1){
+                    diag[1] += 1;
+                }
+                for(let j=0; j<size; j++){
+                    if(table[i][j]==-1){
+                        hor[i] += 1;
+                    }
+                    if(table[j][i]==-1){
+                        ver[1] += 1;
+                    }
+                }
+            }
+            bingo[0]=diag[0];
+            bingo[1]=diag[1];
+            for(i=0; i<size; i++){ // 
+                bingo[i+2]=hor[i];
+                bingo[i+2+size]=ver[i];
+            }
+            return bingo; // 대각선, 수평, 수직 방향의 체크된 셀의 개수
+
+            for(i=0; i<2*size+2;i++){
+                cnt=cnt+Math.floor(bingo[i]/size);
+                if(bAuto&&bingo[i]>check_max&&bingo[i]<size){
+                    check_max=bingo[i];
+                    maxIdx=i;
+                }
+            }
+            if(!bAuto){
+                return cnt;
+            }
+            if(maxIdx==0){
+                let mpt=Math.floor(size/2)+1;
+                if(table[mPt])
+            }
+        }
+    </script>
+</body>
+</html>

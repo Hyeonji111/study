@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bingo Game</title>
+    <script src="./bingoGame.js"></script>
+</head>
+<body>
+    <h1> --- Bingo Game --- </h1>
+    
+    <!-- 게임 테이블-->
+    <section class="gameTable">
+    </section>
+
+    <button id="gameStart">게임 시작</button><br><br>
+    <input id="num" type="text" placeholder="숫자를 입력하세요."><button type="button" id="numRegister">등록</button>
+
+    <script>
+        let myTable = new table();
+        myTable.createTable();
+        check.createTable();
+        bingo.createTable();
+
+        let myComputer = new computerCheck();
+        
+        let myPlayer = new playerCheck();
+    </script>
+</body>
+</html>
