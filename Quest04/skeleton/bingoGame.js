@@ -11,6 +11,7 @@
 class table{
 
     tableCreate(){
+        // 선언
         let gameStart = document.querySelector('#gameStart');
         let num = document.querySelector('#num');
         let numRegister = document.querySelector('#numRegister');
@@ -28,6 +29,7 @@ class table{
             let row = []; // 2차원에 담기위한 임시 배열
             let called = ""; // 호출된 숫자들을 담을 변수.
 
+            // tr td 추가??
             for(let i=0;i<ArrNum.length;i++){
                 row[i%5] = ArrNum[i]; // 5개씩 담는다.
                 if((i+1)%5==0){ // 5개가 담기면 2차원 배열에 담고 insert[] 초기화
